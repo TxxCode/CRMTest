@@ -68,14 +68,25 @@
     </dependency>
 
   </dependencies>
+
+  <properties>
+    <!--maven构建项目使用utf-8,避免中文的乱码-->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--jdk版本号-->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+
   <build>
     <resources>
       <resource>
         <directory>src/main/java</directory><!--所在的目录-->
-        <includes><!--包括目录下的.properties,.xml文件都会扫描到-->
+        <includes><!--包括目录下的.properties,.xml 文件都会扫描到-->
           <include>**/*.properties</include>
           <include>**/*.xml</include>
         </includes>
+        <!--filtering 选项 false 不启用过滤器， *.property 已经起到过滤的作用了 -->
         <filtering>false</filtering>
       </resource>
     </resources>

@@ -124,6 +124,68 @@
 
 
     </select>
+
+    <!--删除市场活动-->
+    <delete id="delete">
+        delete
+        from tbl_activity
+        where id in
+        <foreach collection="array" item="aid" open="(" close=")" separator=",">
+            #{aid}
+        </foreach>
+    </delete>
+
+    <!--根据id查信息-->
+    <select id="getById" resultType="Activity">
+        select * from tbl_activity where id=#{id}
+    </select>
+
+    <!--修改市场活动-->
+    <update id="update">
+
+        update tbl_activity set
+
+        owner=#{owner},
+        name=#{name},
+        startDate=#{startDate},
+        endDate=#{endDate},
+        cost=#{cost},
+        description=#{description},
+        editTime=#{editTime},
+        editBy=#{editBy}
+
+        where id=#{id}
+
+
+
+    </update>
+
+    <!--详细页面数据获取-->
+    <select id="detail" resultType="Activity">
+
+        select
+
+        a.id,
+        u.name as owner,
+        a.name,
+        a.startDate,
+        a.endDate,
+        a.cost,
+        a.description,
+        a.createTime,
+        a.createBy,
+        a.editTime,
+        a.editBy
+
+
+        from tbl_activity a
+        join tbl_user u
+        on a.owner=u.id
+
+        where a.id=#{id}
+
+
+    </select>
 </mapper>
 
 

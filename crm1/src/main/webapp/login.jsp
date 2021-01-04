@@ -28,14 +28,20 @@
 
 			//为登录按钮绑定事件
 			$("#submitBtn").click(function () {
-				login();
+
+				$(this).button('loading').delay(1).queue(function() {
+					login();
+				});
+
 			})
 			//为当前登录也窗口绑定敲键盘事件
 			$(window).keydown(function(event){
 
 				//event.keyCode为13时敲的事回车键
 				if(event.keyCode==13) {
-					login();
+					$(this).button('loading').delay(1).queue(function() {
+						login();
+					});
 				}
 			})
 		})
@@ -99,7 +105,7 @@
 						
 					</div>
 					<%--注意：按钮写在form表单中，默认的行为就是提交表单，一定要将按钮设置为button--%>
-					<button type="button" id="submitBtn" class="btn btn-primary btn-lg btn-block"  style="width: 350px; position: relative;top: 45px;">登录</button>
+					<button type="button" id="submitBtn" data-loading-text="登录中..." class="btn btn-primary btn-lg btn-block" autocomplete="off"  style="width: 350px; position: relative;top: 45px;">登录</button>
 				</div>
 			</form>
 		</div>
