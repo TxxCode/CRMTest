@@ -6,7 +6,6 @@
 <mapper namespace="com.tx.crm.workbench.dao.ContactsRemarkDao">
 
     <insert id="save">
-
         insert into tbl_contacts_remark(
 
             id,
@@ -30,9 +29,6 @@
 
 
         )
-
-
-
     </insert>
 
 </mapper>
